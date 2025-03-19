@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Page</title>
+  <link rel="stylesheet" href="gpt.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="sidebar">
+        <h1 class="message-heading">Messages</h1>
+        <div class="headings">
+            <h2 class="inbox-heading">Inbox</h2>
+            <h2 class="new-chat-heading">New Chat</h2>
+          </div>
+      <div class="user-list">
+        <div class="user">
+          <div class="user-avatar">
+            <img src="croping17.png" alt="User 1">
+          </div>
+          <div class="user-details">
+            <p>Ashraf</p>
+            <span>Sent just now</span>
+          </div>
+        </div>
+        <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Mani Sai</p>
+              <span>You:sent a sticker.4hr</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Kshitij</p>
+              <span>Liked your message.3w</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Eashwar</p>
+              <span>Sent a pic.12w</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Swami</p>
+              <span>Swami:heyy..!.5m</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Resi</p>
+              <span>Last seen 3w ago</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Sindhu</p>
+              <span>Sindhu:😘😘.now</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Room_mates</p>
+              <span>You:tea packet</span>
+            </div>
+          </div>
+          <div class="user">
+            <div class="user-avatar">
+              <img src="croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Ds-CSEB</p>
+              <span>Sireesha Mam:all students come to cls immediately .now</span>
+            </div>
+          </div>
+        <div class="user">
+          <div class="user-avatar">
+            <img src="croping17.png" alt="User 2">
+          </div>
+          <div class="user-details">
+            <p>Chat-HUB</p>
+            <span>Last seen 1d ago</span>
+          </div>
+        </div>
+
+        <!-- Add more user profiles here -->
+      </div>
+    </div>
+    <div class="chat-content">
+        <div class="chat-header">
+            <div class="user-info">
+              <div class="user">
+                <div class="user-avatar">
+                  <img src="croping17.png" alt="User 1">
+                </div>
+                <div class="user-details">
+                  <p>Ashraf</p>
+                </div>
+              </div>
+              
+              
+              <div class="call-options">
+                <button class="voice-call-btn">Voice Call</button>
+                <button class="video-call-btn">Video Call</button>
+              </div>
+            </div>
+          </div>
+      <div class="chat-messages">
+        <div class="message received">
+          <p>Hello!</p>
+        </div>
+        <div class="message sent">
+          <p>Hi there!</p>
+        </div>
+        <!-- More messages go here -->
+      </div>
+      <div class="chat-input">
+        <button class="emoji-btn">😊</button>
+        <input id="messageInput" style="background-color: black;" style="color: aliceblue;" type="text" placeholder="Type a message...">
+        <button class="voice-btn">🎙️</button>
+        <button class="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value.trim();
+      
+      if (message !== '') {
+        const chatMessages = document.querySelector('.chat-messages');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', 'sent');
+        messageElement.innerHTML = `<p>${message}</p>`;
+      
+        chatMessages.appendChild(messageElement);
+        messageInput.value = ''; // Clear input field after sending
+      }
+    }
+  </script>
+</body>
+</html>

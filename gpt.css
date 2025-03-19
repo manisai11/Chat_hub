@@ -1,0 +1,322 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .chat-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 25%;
+    color: #fff;
+    background-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  
+  .user-list {
+    padding: 20px;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .user-details {
+    flex: 1;
+  }
+  
+  .user-details p {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .user-details span {
+    font-size: 12px;
+    color: #888;
+  }
+  .chat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-messages {
+    background-color: #778d8c;
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 70%;
+  }
+  .chat-input input::placeholder {
+    color: #f0f0f0;
+  }
+
+  .sent {
+    background-color: #8ddfa2;
+    align-self: flex-end;
+    text-align: right;
+  }
+  
+  .received {
+    background-color: #ECE5DD;
+    align-self: flex-start;
+    text-align: left;
+  }
+  
+  .chat-input {
+    color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-top: 1px solid #333;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 8px;
+    color: whitesmoke;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    outline: none;
+  }
+  
+  .chat-input button {
+    background-color: #333;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-input button.emoji-btn {
+    font-size: 18px;
+  }
+  
+  .chat-input button.voice-btn {
+    color: #ff6347;
+    font-weight: bold;
+  }
+  
+  .chat-input button.send-btn {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .chat-input button:hover {
+    background-color: #f0f0f0;
+  }
+  .chat-input button.send-btn:hover {
+    color: black;
+  }
+  .chat-input button:active {
+    transform: translateY(1px);
+  }
+/* Existing CSS styles */
+/* ... */
+
+.sidebar {
+    /* ... */
+    padding: 20px;
+  }
+  
+  .headings {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+  }
+  .message-heading{
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+  .inbox-heading{
+    padding-bottom: 0px;
+    margin-left: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .new-chat-heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .inbox,
+  .new-chat {
+    margin-bottom: 0px;
+    padding: 0px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inbox:hover,
+  .new-chat:hover {
+    background-color: #e0e0e0;
+  }
+  .chat-header {
+    background-color: #333;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* User info */
+  .user-info {
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* User name */
+  .user-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Call options buttons */
+  .call-options button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Voice call button */
+  .voice-call-btn {
+    background-color: #3498db;
+    color: white;
+    box-shadow: #333 ;
+  }
+  
+  /* Video call button */
+  .video-call-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  /* Hover styles for call buttons */
+  .voice-call-btn:hover,
+  .video-call-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Adjustments for message styles */
+  .chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  /* User List Styling */
+.user-list {
+  padding: 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user:hover {
+  background-color: #444;
+}
+
+/* Message Display */
+.message {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 12px;
+  max-width: 80%;
+}
+
+.sent {
+  background-color: #8ddfa2;
+  align-self: flex-end;
+  text-align: right;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.received {
+  background-color: #ECE5DD;
+  align-self: flex-start;
+  text-align: left;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Field */
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  color: #f0f0f0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+/* Call Option Buttons */
+.call-options button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Voice call button */
+.voice-call-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Video call button */
+.video-call-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Hover styles for call buttons */
+.voice-call-btn:hover,
+.video-call-btn:hover {
+  background-color: #2980b9;
+}
