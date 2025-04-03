@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, {{ user.username }}</h1>
+        <p>Email: {{ user.email }}</p>
+        <p>Joined on: {{ user.join_date }}</p>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </header>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/verify_otp.css">
+    <title>OTP Verification</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="{{ url_for('auth.verify_otp', email=email) }}" method="POST">
+            <h2>Enter OTP</h2>
+            <div class="input-box">
+                <input type="text" name="otp" placeholder="Enter OTP" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="new_password" placeholder="New Password" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            </div>
+
+            <button type="submit" class="btn">Reset Password</button>
+        </form>
+    </div>
+</body>
+</html>

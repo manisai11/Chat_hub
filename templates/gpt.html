@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Page</title>
+  <link rel="stylesheet" href="/static/css/gpt.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+
+<body>
+  <div class="chat-container">
+    <div class="sidebar">
+      <h1 class="message-heading">Messages</h1>
+      <div class="headings">
+        <h2 class="inbox-heading">Inbox</h2>
+        <h2 class="new-chat-heading">New Chat</h2>
+      </div>
+      <div class="user-list">
+        <div class="user">
+          <div class="user-avatar">
+            <img src="/static/images/croping17.png" alt="User 1">
+          </div>
+          <div class="user-details">
+            <p>Ashraf</p>
+            <span>Sent just now</span>
+          </div>
+        </div>
+        <!-- More user profiles here -->
+      </div>
+    </div>
+
+    <div class="chat-content">
+      <div class="chat-header">
+        <div class="user-info">
+          <div class="user">
+            <div class="user-avatar">
+              <img src="/static/images/croping17.png" alt="User 1">
+            </div>
+            <div class="user-details">
+              <p>Ashraf</p>
+            </div>
+          </div>
+          <div class="call-options">
+            <button class="voice-call-btn">Voice Call</button>
+            <button class="video-call-btn">Video Call</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <!-- Messages will appear here -->
+      </div>
+
+      <div class="chat-input">
+        <button class="emoji-btn">😊</button>
+        <input id="messageInput" type="text" placeholder="Type a message...">
+        <button class="voice-btn">🎙️</button>
+        <button class="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var socket = io.connect("http://" + document.domain + ":" + location.port);
+
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value.trim();
+      
+      if (message !== '') {
+        socket.emit('message', {"user": "{{ current_user.username }}", "message": message}); 
+        messageInput.value = ''; 
+      }
+    }
+
+    socket.on('message', function(data) {
+      const chatMessages = document.getElementById('chatMessages');
+      const messageElement = document.createElement('div');
+
+      messageElement.classList.add('message');
+      messageElement.classList.add(data.user === "{{ current_user.username }}" ? 'sent' : 'received');
+      messageElement.innerHTML = `<p><strong>${data.user}:</strong> ${data.message}</p>`;
+      
+      chatMessages.appendChild(messageElement);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Picker</title>
+    <link rel="stylesheet" href="https://emoji-button.js.org/dist/emoji-button.css">
+    <style>
+        #emoji-list {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+        #emoji-list button {
+            font-size: 24px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        #emoji-list button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button id="emoji-button">😀</button>
+    <input type="text" id="emoji-input" placeholder="Type here...">
+
+    <script src="https://emoji-button.js.org/dist/emoji-button.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('#emoji-button');
+            const input = document.querySelector('#emoji-input');
+            const picker = new EmojiButton();
+
+            button.addEventListener('click', () => {
+                picker.togglePicker(button);
+            });
+
+            picker.on('emoji', emoji => {
+                input.value += emoji;
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!button.contains(event.target) && !picker.container.contains(event.target)) {
+                    picker.hidePicker();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-Hub</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <nav>
+                
+                <div class="logo">
+                    <h2>Chat<span>Hub</span></h2>  
+                </div>
+                <div class="nav-container"> <!-- Added wrapper -->
+                    <ul class="nav-area">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ url_for('chat_page') }}">Chat</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    </ul>
+                    <!-- Profile Dropdown -->
+                    <li class="profile-menu">
+                        <img src="/static/images/user-icon.png" alt="Profile" class="profile-icon" id="profileIcon">
+                        <ul class="dropdown" id="profileDropdown">
+                            <li><a href="{{ url_for('auth.profile') }}">View Profile</a></li>
+                            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                    
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const profileIcon = document.getElementById("profileIcon");
+                            const profileDropdown = document.getElementById("profileDropdown");
+                    
+                            profileIcon.addEventListener("click", function(event) {
+                                event.stopPropagation();  // Prevent closing when clicking inside
+                                profileDropdown.classList.toggle("show-dropdown");
+                            });
+                    
+                            document.addEventListener("click", function(event) {
+                                if (!profileIcon.contains(event.target) && !profileDropdown.contains(event.target)) {
+                                    profileDropdown.classList.remove("show-dropdown");
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </nav>
+            
+            <div class="welcome-text">
+                <h1>Welcome to <span>Chat-Hub</span></h1>
+                <p>Connect, chat, and experience the future of communication</p>
+                <div class="buttons">
+                    <a href="#" class="btn">Home</a>
+                    <a href="{{ url_for('chat_page') }}" class="btn neon">Start Chat</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

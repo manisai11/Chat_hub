@@ -1,0 +1,46 @@
+* {
+    background-color: black;
+    font-family: "Poppins", sans-serif;
+}
+.scroll-bar{
+    height: 100%;
+    width: 400px;
+    border: 1px solid black;
+    font-family: "Poppins", sans-serif;
+    overflow: auto;
+    background-color: black;
+}
+.scroll-bar .inbox{
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: left;
+    color: aliceblue;
+    font-size:20px ;
+    padding-bottom: 15px;
+}
+.scroll-bar .heading{
+    letter-spacing: 3px;
+    color: rgb(209, 14, 206);
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+.scroll-bar .inner{
+    color: #fff;
+    font-size: 24px;
+    border-radius: 20px;
+}
+.scroll-bar .a{
+    letter-spacing: 1.5px;
+    line-height: 1.4;
+    border: 2px solid black;
+    
+}
+.whole{
+    background-color: black;
+}
+.a .msg{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}

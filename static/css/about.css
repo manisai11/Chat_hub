@@ -1,0 +1,97 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+#click {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+#click:hover {
+    transform: scale(1.1); /* Enlarges the element by 10% */
+}
+
+/* Body Styling */
+body {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #222;
+    text-align: center;
+}
+
+/* Logo */
+.logo h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.logo h2 span {
+    color: #ffcc00;
+}
+
+/* About Section */
+.about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.about-container h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.about-container h2 {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #ff8800;
+}
+
+.about-container p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Links */
+.about-container a {
+    color: #00e1ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        width: 90%;
+        padding: 15px;
+    }
+    .about-container h1 {
+        font-size: 28px;
+    }
+    .about-container h2 {
+        font-size: 22px;
+    }
+    .about-container p {
+        font-size: 16px;
+    }
+}

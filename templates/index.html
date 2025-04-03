@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-Hub</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="wrapper">
+                <!--<div class="logo">
+                    <img src="/static/images/logo.png" alt="Chat-Hub Logo">
+                </div>-->
+            </div>
+            <div class="welcome-text">
+                <h1>Welcome to <span>Chat-Hub</span></h1>
+                <p>Your secure and efficient messaging platform</p>
+                <a href="{{ url_for('auth.login') }}" class="btn">Get Started</a>
+            </div>
+        </header>
+
+        <main></main> <!-- Ensures content pushes footer down dynamically -->
+
+        <!-- Footer Section -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="{{ url_for('about') }}">About Us</a>
+                    
+                </div>
+                <div class="footer-social">
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                </div>
+                <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+                <p>&copy; 2025 Chat-Hub. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/static/css/chatting.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+
+    
+</head>
+<body>
+    <div id="chat-container">
+        <h2>Welcome, {{ user.username }}</h2>
+
+        <h3>Chat with:</h3>
+        <input type="text" id="receiver" placeholder="Enter username to chat">
+        <button onclick="joinChat()">Start Chat</button>
+
+        <div id="chat-box"></div>
+
+        <input type="text" id="message" placeholder="Type a message">
+        <button id="send" onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        var socket = io.connect("http://" + document.domain + ":" + location.port);
+        var username = "{{ user.username }}";
+        var chatRoom = "";
+    
+        function joinChat() {
+            chatRoom = document.getElementById("receiver").value;
+            if (chatRoom === "") {
+                alert("Enter a valid username to chat with!");
+                return;
+            }
+    
+            fetch(`/check_user/${chatRoom}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.exists) {
+                    socket.emit("join", { room: username });
+    
+                    fetch(`/chat_history/${chatRoom}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("chat-box").innerHTML = "";
+                        data.messages.forEach(msg => {
+                            appendMessage(msg.sender, msg.message);
+                        });
+                    });
+    
+                    document.getElementById("chat-box").innerHTML += `<b>Connected to ${chatRoom}</b><br>`;
+                } else {
+                    alert("User does not exist! Please enter a valid username.");
+                }
+            })
+            .catch(error => {
+                console.error("Error checking user:", error);
+            });
+        }
+    
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            if (chatRoom === "") {
+                alert("Start a chat first!");
+                return;
+            }
+            if (message.trim() === "") {
+                alert("Message cannot be empty!");
+                return;
+            }
+    
+            socket.emit("private_message", { receiver: chatRoom, message: message });
+    
+            appendMessage(username, message, "sent");
+    
+            document.getElementById("message").value = "";
+        }
+    
+        function appendMessage(sender, message) {
+            var chatBox = document.getElementById("chat-box");
+            var msgDiv = document.createElement("div");
+            msgDiv.classList.add("message");
+            msgDiv.textContent = message;
+    
+            if (sender === username) {
+                msgDiv.classList.add("sent");
+            } else {
+                msgDiv.classList.add("received");
+            }
+    
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    
+        socket.on("private_message", function(data) {
+            appendMessage(data.sender, data.message);
+        });
+    </script>
+    
+</body>
+</html>
