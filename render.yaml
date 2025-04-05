@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: chat-hub
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn --worker-class eventlet -w 1 app:app
+    plan: free
+    envVars:
+      - key: SECRET_KEY
+        value: your-secret-key
