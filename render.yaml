@@ -7,4 +7,10 @@ services:
     plan: free
     envVars:
       - key: SECRET_KEY
-        value: your-secret-key
+        value: ${SECRET_KEY}
+      - key: EMAIL_ADDRESS
+        value: ${EMAIL_ADDRESS}
+      - key: EMAIL_PASSWORD
+        value: ${EMAIL_PASSWORD}
+      - key: MONGO_URI
+        value: ${MONGO_URI}

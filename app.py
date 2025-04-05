@@ -10,7 +10,7 @@ UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'pdf', 'doc', 'docx', 'txt'}
 
 app = Flask(__name__)
-app.secret_key = b'6bde59df5ac94025a9388b3f9d118430'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 socketio = SocketIO(app, cors_allowed_origins="*")
