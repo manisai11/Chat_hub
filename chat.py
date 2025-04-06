@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 from flask_login import login_required, current_user
 from flask_socketio import emit, join_room, leave_room
 from datetime import datetime
@@ -33,6 +33,23 @@ def create_chat_blueprint(socketio):
     @login_required
     def chat_page():
         return render_template("chat.html", user=current_user)
+    
+    
+
+    @chat.route('/user_suggestions')
+    @login_required
+    def user_suggestions():
+        query = request.args.get('q', '').lower()
+        if not query:
+            return jsonify(users=[])  # return empty if nothing typed
+
+        # Filter users whose usernames start with the query (case-insensitive)
+        matched_users = [user['username'] for user in users_collection.find({"username": {"$regex": f"^{query}", "$options": "i"}})]
+
+        return jsonify(users=matched_users)
+
+
+
 
     @socketio.on("join")
     def handle_join(data):

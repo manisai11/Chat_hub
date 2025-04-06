@@ -2,6 +2,7 @@
 #container {
     display: flex;
     height: 100vh;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
 /* Sidebar styles */
@@ -11,6 +12,7 @@
     color: white;
     padding: 20px;
     overflow-y: auto;
+    animation: slideInLeft 0.5s ease;
 }
 
 #sidebar h3 {
@@ -31,11 +33,12 @@
     border-radius: 8px;
     margin-bottom: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #recent-users li:hover {
     background-color: #70a1ff;
+    transform: scale(1.03);
 }
 
 /* Chat container styles */
@@ -43,6 +46,7 @@
     flex: 1;
     padding: 20px;
     background-color: #f0f2f5;
+    animation: slideInRight 0.5s ease;
 }
 
 /* Chatbox styling */
@@ -54,6 +58,7 @@
     margin-top: 15px;
     overflow-y: auto;
     background-color: #e6ecf0;
+    animation: fadeIn 0.5s ease;
 }
 
 /* Message bubbles */
@@ -64,6 +69,8 @@
     max-width: 70%;
     word-wrap: break-word;
     clear: both;
+    opacity: 0;
+    animation: popUp 0.4s forwards;
 }
 
 .sent {
@@ -83,8 +90,15 @@
     border-radius: 8px;
     border: 1px solid #ccc;
     margin-top: 10px;
+    transition: box-shadow 0.3s;
 }
 
+#receiver:focus, #message:focus {
+    box-shadow: 0 0 5px #888;
+    outline: none;
+}
+
+/* Send button */
 #send {
     padding: 10px 16px;
     background-color: #25d366;
@@ -93,8 +107,80 @@
     border-radius: 8px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 #send:hover {
     background-color: #128c7e;
+    transform: scale(1.05);
+}
+
+/* Mic (voice input) button */
+#mic {
+    padding: 10px 16px;
+    margin-left: 5px;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#mic:hover {
+    background-color: #e55063;
+    transform: scale(1.05);
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.suggestions-box {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin-top: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.suggestions-box li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.suggestions-box li:hover {
+    background-color: #f2f2f2;
 }
