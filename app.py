@@ -16,7 +16,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-socketio = SocketIO(app, cors_allowed_origins="*")
+REDIS_URL = os.getenv("REDIS_URL")
+socketio = SocketIO(app, cors_allowed_origins="*", message_queue=REDIS_URL)
 
 app.register_blueprint(auth)
 chat = create_chat_blueprint(socketio)
